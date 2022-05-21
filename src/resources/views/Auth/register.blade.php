@@ -32,15 +32,15 @@
                   <form method="POST" action="/register">
                     @csrf
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter Name" value="{{ old('name') }}" required>
+                      <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Enter Name" value="{{ old('name') }}" autofocus required>
                       @error('name')<div id="validationName" class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Email Address" value="{{ old('email') }}" required>
+                      <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Email Address" value="{{ old('email') }}" autofocus required>
                       @error('email')<div id="validationEmail" class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
-                      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter Password" required>
+                      <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Enter Password" autofocus required>
                         @error('password')<div id="validationPassword" class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group">
