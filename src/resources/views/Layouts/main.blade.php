@@ -18,35 +18,33 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-            @include('Layouts.sidebar')
-            <!-- Sidebar -->
-            
-        <!-- TopBar -->    
-            @include('Layouts.topbar')
-        <!-- Topbar -->
+        @include('Layouts.sidebar')
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- TopBar -->
+                @include('Layouts.topbar')
+                <!-- Topbar -->
 
-            <!-- Container Fluid-->
-            <div class="container-fluid" id="container-wrapper">
-                @yield('container')
-                <!-- Modal Logout -->
-                    @include('Layouts.modal-logout')
-                <!-- Modal Logout -->
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    @yield('container')
+                </div>
+                <!---Container Fluid-->
             </div>
-            <!---Container Fluid-->
         </div>
-    </div>
 
-    <!-- Scroll to top -->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+        <!-- Scroll to top -->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <script src="dist/vendor/jquery/jquery.min.js"></script>
-    <script src="dist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="dist/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="dist/js/ruang-admin.min.js"></script>
-    <script src="dist/vendor/chart.js/Chart.min.js"></script>
-    <script src="dist/js/demo/chart-area-demo.js"></script>
+        <script src="dist/vendor/jquery/jquery.min.js"></script>
+        <script src="dist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="dist/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="dist/js/ruang-admin.min.js"></script>
+        <script src="dist/vendor/chart.js/Chart.min.js"></script>
+        <script src="dist/js/demo/chart-area-demo.js"></script>
 </body>
 
 </html>

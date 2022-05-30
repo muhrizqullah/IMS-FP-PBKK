@@ -6,10 +6,11 @@
         <div class="sidebar-brand-text mx-3">RuangAdmin</div>
     </a>
     <hr class="sidebar-divider my-0">
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+    <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+        <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard</span>
+        </a>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
@@ -27,8 +28,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Orders</h6>
-                <a class="collapse-item" href="alerts.html">Orders List</a>
-                <a class="collapse-item" href="buttons.html">New Order</a>
+                <a class="collapse-item {{ Request::is('orders') ? 'active' : '' }}" href="/orders">Orders List</a>
+                <a class="collapse-item {{ Request::is('category/store') ? 'active' : '' }}" href="/store-order">New Order</a>
             </div>
         </div>
     </li>
@@ -45,8 +46,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Categories</h6>
-                <a class="collapse-item" href="alerts.html">Categories List</a>
-                <a class="collapse-item" href="buttons.html">Add Category</a>
+                <a class="collapse-item {{ Request::is('category') ? 'active' : '' }}" href="/category">Categories List</a>
+                <a class="collapse-item" href="/category/create">Add Category</a>
             </div>
         </div>
     </li>
@@ -63,8 +64,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Products</h6>
-                <a class="collapse-item" href="alerts.html">Products List</a>
-                <a class="collapse-item" href="buttons.html">Add Product</a>
+                <a class="collapse-item {{ Request::is('category/store') ? 'active' : '' }}" href="/products">Products List</a>
+                <a class="collapse-item {{ Request::is('category/store') ? 'active' : '' }}" href="/store-product">Add Product</a>
             </div>
         </div>
     </li>
