@@ -43,7 +43,7 @@ class CategoryController extends Controller
         ]);
         Category::create($validatedData);
 
-        return redirect('/')->with('success', 'New category created successfully!');
+        return redirect('/category')->with('success', 'New category created successfully!');
     }
 
     /**

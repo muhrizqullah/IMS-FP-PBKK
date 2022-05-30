@@ -1,5 +1,15 @@
 @extends('Layouts.main')
 @section('container')
+    {{-- Alert Create Category Success Start --}}
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ session('success') }}
+        </div>
+    @endif
+    {{-- Alert Create Category Success End --}}
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create Category</h1>
@@ -28,18 +38,18 @@
                             </thead>
                             <tbody>
                                 @foreach ($categories as $category)
-                                <tr>
-                                    <td>
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td> 
-                                        {{ $category->category_name }}
-                                    </td>
-                                    <td>
-                                        <button class="btn btn-sm btn-primary">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td>
+                                            {{ $category->category_name }}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
