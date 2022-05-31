@@ -47,7 +47,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Categories</h6>
                 <a class="collapse-item {{ Request::is('category') ? 'active' : '' }}" href="/category">Categories List</a>
-                <a class="collapse-item" href="/category/create">Add Category</a>
+                <a class="collapse-item {{ Request::is('category/create') ? 'active' : '' }}" href="/category/create">Add Category</a>
             </div>
         </div>
     </li>

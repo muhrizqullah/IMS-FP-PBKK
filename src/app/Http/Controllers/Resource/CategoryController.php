@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -49,12 +49,14 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        return view('Category.edit');
+        return view('Category.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -66,7 +68,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'category_name' => 'required|unique:categories',
+        ]);
+
+        Category::where('id', $id)->update($validatedData);
+
+        return redirect('/category')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -77,6 +85,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::destroy($id);
+
+        return redirect('/category')->with('success', 'Category deleted successfully!');
     }
 }

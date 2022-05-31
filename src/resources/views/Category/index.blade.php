@@ -46,8 +46,15 @@
                                             {{ $category->category_name }}
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-primary">Edit</button>
-                                            <button class="btn btn-sm btn-danger">Delete</button>
+                                            <form class="d-inline" action="/category/{{ $category->id }}/edit">
+                                                @csrf
+                                                <button class="btn btn-sm btn-primary">Edit</button>
+                                            </form>
+                                            <form class="d-inline" action="/category/{{ $category->id }}" method="POST">
+                                                @method('delete')
+                                                @csrf
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
