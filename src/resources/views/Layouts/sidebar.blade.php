@@ -35,6 +35,24 @@
     </li>
     {{-- Orders --}}
 
+    {{-- Suppliers --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuppliers"
+            aria-expanded="true" aria-controls="collapseSuppliers">
+            <i class="far fa-address-card"></i>
+            <span>Suppliers</span>
+        </a>
+        <div id="collapseSuppliers" class="collapse" aria-labelledby="headingSuppliers"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Suppliers</h6>
+                <a class="collapse-item {{ Request::is('supplier') ? 'active' : '' }}" href="/supplier">Suppliers List</a>
+                <a class="collapse-item {{ Request::is('supplier/create') ? 'active' : '' }}" href="/supplier/create">Add Supplier</a>
+            </div>
+        </div>
+    </li>
+    {{-- Suppliers --}}    
+
     {{-- Categories --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories"

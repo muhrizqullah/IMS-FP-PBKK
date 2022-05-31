@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resource\CategoryController;
+use App\Http\Controllers\Resource\SupplierController;
 
 
 /*
@@ -29,4 +30,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Category
 Route::resource('/category', CategoryController::class)->middleware('auth');
-Route::get('/store-category', [CategoryController::class, 'create']);
+Route::resource('/supplier', SupplierController::class)->middleware('auth');
