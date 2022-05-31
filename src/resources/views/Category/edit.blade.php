@@ -23,7 +23,7 @@
                                     @method('put')
                                     @csrf
                                     <div class="form-group">
-                                        <input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" id="category_name" placeholder="Enter Category Name" value="{{ old('category_name', $category->category_name) }}" autofocus required>
+                                        <input type="text" name="category_name" class="form-control @error('category_name') is-invalid @enderror" id="category_name" placeholder="Enter New Category Name" value="{{ old('category_name', $category->category_name) }}" autofocus required>
                                         @error('category_name')<div id="validationcategory_name" class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
                                     <div class="form-group">

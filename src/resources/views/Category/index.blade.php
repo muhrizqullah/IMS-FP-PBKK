@@ -10,6 +10,7 @@
         </div>
     @endif
     {{-- Alert Create Category Success End --}}
+
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Create Category</h1>
@@ -18,9 +19,19 @@
                 <li class="breadcrumb-item active" aria-current="page">Categories List</li>
             </ol>
         </div>
-        <input type="text" class="form-control" style="width: 300px;" placeholder="Search">
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/category">
+                    <div class="input-group mb-3">
+                        <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <br>
-
+        
+        @if($categories->count())
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <div class="card">
@@ -65,4 +76,8 @@
             </div>
         </div>
     </div>
+
+    @else
+    <p class="text-center fs-4">Not Found!</p>
+    @endif
 @endsection

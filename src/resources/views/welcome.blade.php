@@ -48,7 +48,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-uppercase mb-1">Categories</div>
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">5</div>
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $category_count }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-archive fa-2x text-info"></i>

@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('Category.index', [
-            'categories' => Category::all()
+            'categories' => Category::latest()->filter(request(['search']))->get(),
         ]);
     }
 
