@@ -1,6 +1,6 @@
 @extends('Layouts.main')
 @section('container')
-    {{-- Alert Create Category Success Start --}}
+    {{-- Alert Create Product Success Start --}}
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -9,19 +9,19 @@
             {{ session('success') }}
         </div>
     @endif
-    {{-- Alert Create Category Success End --}}
+    {{-- Alert Create Product Success End --}}
 
     <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Categories List</h1>
+            <h1 class="h3 mb-0 text-gray-800">Products List</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Categories</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categories List</li>
+                <li class="breadcrumb-item"><a href="./">Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Products List</li>
             </ol>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <form action="/category">
+                <form action="/product">
                     <div class="input-group mb-3">
                         <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
                         <button type="submit" class="btn btn-primary">Search</button>
@@ -31,37 +31,67 @@
         </div>
         <br>
         
-        @if($categories->count())
+        @if($products->count())
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <div class="card">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Categories List</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Products List</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Category Name</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Category</th>
+                                    <th>Supplier</th>
+                                    <th>Buying Price</th>
+                                    <th>Selling Price</th>
+                                    <th>Qty.</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $category)
+                                @foreach ($products as $product)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
                                         <td>
-                                            {{ $category->category_name }}
+                                            {{ $product->product_name }}
                                         </td>
                                         <td>
-                                            <form class="d-inline" action="/category/{{ $category->id }}/edit">
+                                            @if($product->image)
+                                                <img src="{{ asset('storage/' . $product->image) }}"
+                                                alt="{{ $product->product_name  }}" height="48">
+                                            @else
+                                                <img src="{{ asset('storage/product-images/product-alt.png') }}"
+                                                alt="{{ $product->product_name  }}" height="48">
+                                            @endif
+                                        </td>
+                                        <td>
+                                            {{ $product->category->category_name }}
+                                        </td>
+                                        <td>
+                                            {{ $product->supplier->name }}
+                                        </td>
+                                        <td>
+                                            Rp. {{ $product->buying_price }}
+                                        </td>
+                                        <td>
+                                            Rp. {{ $product->selling_price }}
+                                        </td>
+                                        <td>
+                                            {{ $product->quantity }}
+                                        </td>
+                                        <td>
+                                            <form class="d-inline" action="/product/{{ $product->id }}/edit">
                                                 @csrf
                                                 <button class="btn btn-sm btn-primary">Edit</button>
                                             </form>
-                                            <form class="d-inline" action="/category/{{ $category->id }}" method="POST">
+                                            <form class="d-inline" action="/product/{{ $product->id }}" method="POST">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

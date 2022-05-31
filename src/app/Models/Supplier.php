@@ -10,7 +10,10 @@ class Supplier extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'phone', 'address'
+        'name',
+        'email',
+        'phone',
+        'address'
     ];
 
     public function scopeFilter($query, array $filters)

@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resource\CategoryController;
 use App\Http\Controllers\Resource\SupplierController;
+use App\Http\Controllers\Resource\ProductController;
 
 
 /*
@@ -28,6 +29,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-// Category
+// Resource
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/supplier', SupplierController::class)->middleware('auth');
+Route::resource('/product', ProductController::class)->middleware('auth');

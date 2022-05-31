@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Create Supplier</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./">Home</a></li>
+            <li class="breadcrumb-item"><a href="./">Suppliers</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create Supplier</li>
         </ol>
     </div>
@@ -26,7 +26,7 @@
                                         @error('name')<div id="validationname" class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Email " value="{{ old('email') }}" autofocus required>
+                                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Email " value="{{ old('email') }}" autofocus required>
                                         @error('email')<div id="validationemail" class="invalid-feedback">{{ $message }}</div>@enderror
                                     </div>
                                     <div class="form-group">
