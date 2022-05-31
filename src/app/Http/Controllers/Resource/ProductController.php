@@ -108,6 +108,11 @@ class ProductController extends Controller
             'image' => 'image|file|max:1024'
         ]);
 
+        if($request->file('image'))
+        {
+            $validatedData['image'] = $request->file('image')->store('product-images');
+        }
+
         Product::where('id', $id)->update($validatedData);
 
         return redirect('/product')->with('success', 'Product updated successfully!');

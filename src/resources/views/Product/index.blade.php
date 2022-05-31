@@ -67,7 +67,7 @@
                                                 <img src="{{ asset('storage/' . $product->image) }}"
                                                 alt="{{ $product->product_name  }}" height="48">
                                             @else
-                                                <img src="{{ asset('storage/product-images/product-alt.png') }}"
+                                                <img src="{{ asset('storage/product-alt.png') }}"
                                                 alt="{{ $product->product_name  }}" height="48">
                                             @endif
                                         </td>
