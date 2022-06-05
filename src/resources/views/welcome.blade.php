@@ -114,14 +114,9 @@
                                         {{ $order->created_at }}
                                     </td>
                                     <td>
-                                        <form class="d-inline" action="/order/{{ $order->id }}/edit">
+                                        <form class="d-inline" action="/order/{{ $order->id }}" method="GET">
                                             @csrf
-                                            <button class="btn btn-sm btn-primary">Edit</button>
-                                        </form>
-                                        <form class="d-inline" action="/order/{{ $order->id }}" method="POST">
-                                            @method('delete')
-                                            @csrf
-                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                            <button class="btn btn-sm btn-info">Show</button>
                                         </form>
                                     </td>
                                 </tr>
