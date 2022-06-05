@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Resource\CategoryController;
 use App\Http\Controllers\Resource\SupplierController;
 use App\Http\Controllers\Resource\ProductController;
+use App\Http\Controllers\Resource\OrderController;
 
 
 /*
@@ -33,3 +34,4 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::resource('/category', CategoryController::class)->middleware('auth');
 Route::resource('/supplier', SupplierController::class)->middleware('auth');
 Route::resource('/product', ProductController::class)->middleware('auth');
+Route::resource('/order', OrderController::class)->middleware('auth');

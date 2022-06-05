@@ -28,8 +28,8 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Orders</h6>
-                <a class="collapse-item {{ Request::is('orders') ? 'active' : '' }}" href="/orders">Orders List</a>
-                <a class="collapse-item {{ Request::is('category/store') ? 'active' : '' }}" href="/store-order">New Order</a>
+                <a class="collapse-item {{ Request::is('order') ? 'active' : '' }}" href="/order">Orders List</a>
+                <a class="collapse-item {{ Request::is('order/create') ? 'active' : '' }}" href="/order/create">New Order</a>
             </div>
         </div>
     </li>
