@@ -1,5 +1,6 @@
 @extends('Layouts.main')
 @section('container')
+<div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
         <ol class="breadcrumb">
@@ -14,8 +15,8 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-uppercase mb-1">Today Sales</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 150.000</div>
+                            <div class="text-xs font-weight-bold text-uppercase mb-1">Today Profits</div>
+                            <div class="h6 mb-0 font-weight-bold text-gray-800">@money($today_orders->sum('total_profits'))</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-primary"></i>
@@ -31,7 +32,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-uppercase mb-1">Today Orders</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $today_orders->count() }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dolly fa-2x text-success"></i>
@@ -78,62 +79,62 @@
             <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold text-primary">Recent Orders</h6>
-                    <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
+                    <a class="m-0 float-right btn btn-danger btn-sm" href="/order">View More <i
                             class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
+                        @if($orders->count())
                         <thead class="thead-light">
                             <tr>
-                                <th>Order ID</th>
-                                <th>Total Penjualan</th>
+                                <th>No</th>
+                                <th>Total Sales</th>
                                 <th>Total Item</th>
-                                <th>Keuntungan</th>
+                                <th>Profits</th>
+                                <th>Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="#">1</a></td>
-                                <td>Rp. 150.000</td>
-                                <td>5</td>
-                                <td>Rp. 10.000</td>
-                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">2</a></td>
-                                <td>Rp. 150.000</td>
-                                <td>5</td>
-                                <td>Rp. 10.000</td>
-                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">3</a></td>
-                                <td>Rp. 150.000</td>
-                                <td>5</td>
-                                <td>Rp. 10.000</td>
-                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">4</a></td>
-                                <td>Rp. 150.000</td>
-                                <td>5</td>
-                                <td>Rp. 10.000</td>
-                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">5</a></td>
-                                <td>Rp. 150.000</td>
-                                <td>5</td>
-                                <td>Rp. 10.000</td>
-                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                            </tr>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+                                    <td>
+                                       @money($order->total_sales)
+                                    </td>
+                                    <td>
+                                        {{ $order->total_quantity }}
+                                    </td>
+                                    <td>
+                                        @money($order->total_profits)
+                                    </td>
+                                    <td>
+                                        {{ $order->created_at }}
+                                    </td>
+                                    <td>
+                                        <form class="d-inline" action="/order/{{ $order->id }}/edit">
+                                            @csrf
+                                            <button class="btn btn-sm btn-primary">Edit</button>
+                                        </form>
+                                        <form class="d-inline" action="/order/{{ $order->id }}" method="POST">
+                                            @method('delete')
+                                            @csrf
+                                            <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
+                        @else
+                        <p class="text-center fs-4">Not Found!</p>
+                        @endif
                     </table>
                 </div>
                 <div class="card-footer"></div>
             </div>
         </div>
     </div>
-    <!--Row-->
+</div>
 @endsection

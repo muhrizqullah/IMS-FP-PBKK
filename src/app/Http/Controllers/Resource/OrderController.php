@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         return view('Order.index', [
-            'Orders' => Order::latest()->get(),
+            'orders' => Order::latest()->get(),
         ]);
     }
 
@@ -29,7 +29,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('Order.create');
+        return view('Order.create', [
+            'products' => Product::latest()->filter(request(['search']))->get(),
+        ]);
     }
 
     /**

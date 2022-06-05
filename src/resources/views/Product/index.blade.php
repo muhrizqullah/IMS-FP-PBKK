@@ -15,7 +15,7 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Products List</h1>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="./">Products</a></li>
+                <li class="breadcrumb-item"><a href="/product">Products</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Products List</li>
             </ol>
         </div>
@@ -78,10 +78,10 @@
                                             {{ $product->supplier->name }}
                                         </td>
                                         <td>
-                                            Rp. {{ $product->buying_price }}
+                                            @money($product->buying_price)
                                         </td>
                                         <td>
-                                            Rp. {{ $product->selling_price }}
+                                            @money($product->selling_price)
                                         </td>
                                         <td>
                                             {{ $product->quantity }}

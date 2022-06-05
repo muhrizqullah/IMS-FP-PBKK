@@ -11,7 +11,7 @@ class Order extends Model
 
     protected $fillable = [
         'total_sales',
-        'total_quantitiy',
+        'total_quantity',
         'total_profits',
     ];
 }

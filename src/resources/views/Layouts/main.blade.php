@@ -27,9 +27,7 @@
                 <!-- Topbar -->
 
                 <!-- Container Fluid-->
-                <div class="container-fluid" id="container-wrapper">
                     @yield('container')
-                </div>
                 <!---Container Fluid-->
             </div>
         </div>
