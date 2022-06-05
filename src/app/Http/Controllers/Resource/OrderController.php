@@ -59,7 +59,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        return view('Order.show', [
+            'products' => Product::orderBy('product_name')->get(),
+            'order_details' => OrderDetail::where('order_id', '=', $order->id)->orderBy('id')->get(),
+            'order' => $order,
+        ]);
     }
 
     /**

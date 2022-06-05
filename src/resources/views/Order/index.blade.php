@@ -51,6 +51,10 @@
                                     {{ $order->user->name }}
                                 </td>
                                 <td>
+                                    <form class="d-inline" action="/order/{{ $order->id }}" method="GET">
+                                        @csrf
+                                        <button class="btn btn-sm btn-info">Show</button>
+                                    </form>
                                     <form class="d-inline" action="/order/{{ $order->id }}/edit">
                                         @csrf
                                         <button class="btn btn-sm btn-primary">Edit</button>
