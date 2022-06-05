@@ -92,6 +92,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         Order::destroy($id);
+        OrderDetail::where('order_id', '=', $id)->delete();
 
         return redirect('/order')->with('success', 'Order Deleted successfully!');
     }
