@@ -60,12 +60,14 @@ class OrderController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Order  $order
+     * @param  \App\Models\OrderDetail  $order_detail
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order)
     {
         return view('Order.edit', [
             'order' => $order,
+            'order_details' => OrderDetail::where('order_id', '=', $order->id)->get(),
         ]);
     }
 
@@ -84,11 +86,13 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        Order::destroy($id);
+
+        return redirect('/order')->with('success', 'Order Deleted successfully!');
     }
 }

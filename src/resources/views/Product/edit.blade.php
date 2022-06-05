@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between">
         <h1 class="h3 mb-0 text-gray-800">Edit Product</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./">Products</a></li>
+            <li class="breadcrumb-item"><a href="/product">Products</a></li>
             <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
         </ol>
     </div>

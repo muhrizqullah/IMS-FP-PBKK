@@ -4,7 +4,7 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Create Supplier</h1>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="./">Suppliers</a></li>
+            <li class="breadcrumb-item"><a href="/supplier">Suppliers</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create Supplier</li>
         </ol>
     </div>

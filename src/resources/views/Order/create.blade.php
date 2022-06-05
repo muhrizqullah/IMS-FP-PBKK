@@ -89,8 +89,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <input type="text" name="quantity" class="form-control @error('quantity') is-invalid @enderror" id="quantity" value="{{ old('quantity', 1) }}" autofocus required>
-                                                @error('quantity')<div  class="invalid-feedback">{{ $message }}</div>@enderror
+                                                <input type="text" name="quantity" class="form-control" id="quantity" value="{{ old('quantity', 1) }}" required>
                                             </div>
                                         </td>
                                         <td>
