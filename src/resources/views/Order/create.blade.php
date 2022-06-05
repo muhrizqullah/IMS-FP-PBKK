@@ -12,7 +12,7 @@
 
         <div class="row mb-3">
             <!-- Products -->
-            <div class="col-xl-7 col-lg-7 mb-4">
+            <div class="col-xl-6 col-lg-7 mb-4">
                 <div class="card">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Products</h6>
@@ -29,7 +29,6 @@
                         <table class="table align-items-center table-flush">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Qty.</th>
@@ -39,15 +38,6 @@
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>
-                                            @if ($product->image)
-                                                <img src="{{ asset('storage/' . $product->image) }}"
-                                                    alt="{{ $product->product_name }}" height="48">
-                                            @else
-                                                <img src="{{ asset('storage/product-alt.png') }}"
-                                                    alt="{{ $product->product_name }}" height="48">
-                                            @endif
-                                        </td>
                                         <td>
                                             {{ $product->product_name }}
                                         </td>
@@ -76,7 +66,7 @@
             <!-- Products End -->
 
             <!-- New Order -->
-            <div class="col-xl-5 col-lg-5">
+            <div class="col-xl-6 col-lg-5">
                 <div class="card">
                     <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-light">New Order</h6>
