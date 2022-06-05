@@ -48,9 +48,12 @@
                                             {{ $product->quantity }}
                                         </td>
                                         <td>
-                                            <form class="d-inline" action="">
+                                            <form class="d-inline" method="POST" action="/order-detail">
                                                 @csrf
-                                                <button class="btn btn-sm btn-primary">Add</button>
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $order_id }}">
+                                                <input type="hidden" name="product_id" id="product_id" value="{{ $product->id }}">
+                                                <input type="hidden" name="quantity" id="quantity" value="1">
+                                                <button type="submit" class="btn btn-sm btn-primary">Add</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -82,23 +85,40 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $product)
+                                @foreach ($order_details as $item)
                                     <tr>
                                         <td>
-                                            {{ $product->product_name }}
+                                            {{ $item->product->product_name }}
                                         </td>
                                         <td>
-                                            <div class="form-group">
-                                                <input type="text" name="quantity" class="form-control" id="quantity" value="{{ old('quantity', 1) }}" required>
-                                            </div>
+                                            <form>
+                                                {{ $item->quantity }}
+                                            </form>
                                         </td>
                                         <td>
-                                            @money($product->selling_price)
+                                            @money(intval($item->product->selling_price) * intval($item->quantity))
                                         </td>
                                         <td>
-                                            <form class="d-inline" action="">
+                                            <form class="d-inline" method="POST" action="/order-detail/{{ $item->id }}">
+                                                @method('put')
+                                                @csrf                                                
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $order_id }}">
+                                                <input type="hidden" name="product_id" id="product_id" value="{{ $item->product->id }}">
+                                                <input type="hidden" name="quantity" id="quantity" value="{{ intval($item->quantity) - 1 }}">
+                                                <button class="btn btn-sm btn-info">-</button>
+                                            </form>
+                                            <form class="d-inline" method="POST" action="/order-detail/{{ $item->id }}">
+                                                @method('put')
+                                                @csrf                                                
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $order_id }}">
+                                                <input type="hidden" name="product_id" id="product_id" value="{{ $item->product->id }}">
+                                                <input type="hidden" name="quantity" id="quantity" value="{{ intval($item->quantity) + 1 }}">
+                                                <button class="btn btn-sm btn-info">+</button>
+                                            </form>
+                                            <form class="d-inline" action="/order-detail/{{ $item->id }}" method="POST">
+                                                @method('delete')
                                                 @csrf
-                                                <button class="btn btn-sm btn-primary">Delete</button>
+                                                <button class="btn btn-sm btn-danger">x</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -108,7 +128,7 @@
                     </div>
                     <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text">Total</h6>
-                        <h6 class="m-0 font-weight-bold text">Rp.100.000</h6>
+                        <h6 class="m-0 font-weight-bold text">@money($total_sales)</h6>
                     </div>
                 </div>
             </div>

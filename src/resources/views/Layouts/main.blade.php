@@ -12,6 +12,7 @@
     <link href="{{ URL::asset('dist/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('dist/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ URL::asset('dist/css/ruang-admin.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('dist/vendor/bootstrap-touchspin/css/jquery.bootstrap-touchspin.css')}}" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -27,6 +28,25 @@
                 <!-- Topbar -->
 
                 <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+                    {{-- Alert Create Product Success Start --}}
+                        @if (session()->has('success'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ session('success') }}
+                        </div>
+                        @elseif (session()->has('failed'))
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ session('failed') }}
+                        </div>
+                         @endif
+                    {{-- Alert Create Product Success End --}}
+                </div>   
                     @yield('container')
                 <!---Container Fluid-->
             </div>
@@ -43,6 +63,16 @@
         <script src="{{ URL::asset('dist/js/ruang-admin.min.js') }}"></script>
         <script src="{{ URL::asset('dist/vendor/chart.js/Chart.min.js') }}"></script>
         <script src="{{ URL::asset('dist/js/demo/chart-area-demo.js') }}"></script>
+        <script src="{{ URL::asset('dist/vendor/bootstrap-touchspin/js/jquery.bootstrap-touchspin.js') }}"></script>
+        <script>
+            $("input[id='quantityForm']").TouchSpin({
+                min: 0,
+                max: 100,                
+                boostat: 5,
+                maxboostedstep: 10,        
+                initval: 0
+            });
+        </script>
 </body>
 
 </html>

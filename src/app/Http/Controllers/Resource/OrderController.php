@@ -29,9 +29,15 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('Order.create', [
-            'products' => Product::latest()->filter(request(['search']))->get(),
-        ]);
+        $order = new Order();
+        $order->user_id = auth()->id();
+        $order->total_sales = '0';
+        $order->total_quantity = '0';
+        $order->total_profits = '0';
+        $order->save();
+
+        session(['order_id' => $order->id]);
+        return redirect('/order-detail');
     }
 
     /**
