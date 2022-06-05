@@ -127,9 +127,25 @@
                         </table>
                     </div>
                     <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text">Total</h6>
-                        <h6 class="m-0 font-weight-bold text">@money($total_sales)</h6>
+                        <h6 class="m-0 font-weight-bold text">Total Sales</h6>
+                        <h6 class="m-0 font-weight-light text">@money($total_sales)</h6>
                     </div>
+                    <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text">Total Profits</h6>
+                        <h6 class="m-0 font-weight-light text">@money($total_profits)</h6>
+                    </div>
+                    <div class="card-header py-4 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text">Total Quantity</h6>
+                        <h6 class="m-0 font-weight-light text">{{ $total_quantity }}</h6>
+                    </div>
+                    <form class="d-inline" method="POST" action="/order/{{ $order_id }}">
+                        @method('put')
+                        @csrf                                                
+                        <input type="hidden" name="total_sales" id="total_sales" value="{{ $total_sales }}">
+                        <input type="hidden" name="total_quantity" id="total_quantity" value="{{ $total_quantity }}">
+                        <input type="hidden" name="total_profits" id="total_profits" value="{{ $total_profits }}">
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
                 </div>
             </div>
             <!-- New Order -->

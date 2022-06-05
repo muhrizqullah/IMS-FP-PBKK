@@ -71,22 +71,27 @@ class OrderController extends Controller
      */
     public function edit(Order $order)
     {
-        return view('Order.edit', [
-            'order' => $order,
-            'order_details' => OrderDetail::where('order_id', '=', $order->id)->get(),
-        ]);
+        session(['order_id' => $order->id]);
+        return redirect('/order-detail');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'total_sales'  => 'required',
+            'total_profits'  => 'required',
+            'total_quantity'  => 'required'
+        ]);
+        Order::where('id', $id)->update($validatedData);
+
+        return redirect('/order')->with('success', 'Order saved successfully!');
     }
 
     /**

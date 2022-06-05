@@ -18,13 +18,27 @@ class OrderDetailController extends Controller
     {
         if($order_id = session('order_id'))
         {
+            $order_details = OrderDetail::where('order_id', '=', session('order_id'))->get();
             $total_sales = 0;
+            $total_profits = 0;
+            $total_quantity = 0;
+            foreach ($order_details as $item){
+                $buyprice = $item->product->buying_price;
+                $sellprice = $item->product->selling_price;
+                $profits = $sellprice - $buyprice;
+                $quantity = $item->quantity;
+                $total_sales += $sellprice * $quantity;
+                $total_profits += $profits * $quantity;
+                $total_quantity += $quantity;
+            }
             
             return view('OrderDetail.index',[
                 'products' => Product::orderBy('product_name')->get(),
                 'order_details' => OrderDetail::where('order_id', '=', $order_id)->orderBy('id')->get(),
                 'order_id' => $order_id,
-                'total_sales' => $total_sales
+                'total_sales' => $total_sales,
+                'total_profits' => $total_profits,
+                'total_quantity' => $total_quantity,
             ]);
         }   
     }
@@ -65,7 +79,7 @@ class OrderDetailController extends Controller
         }
         else
         {
-            return redirect('/order-detail')->with('failed', 'Out of Stock!');
+            return redirect('/order-detail')->with('failed', 'Check Stock!');
         }
     }
 

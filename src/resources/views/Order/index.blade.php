@@ -25,6 +25,7 @@
                             <th>Total Item</th>
                             <th>Profits</th>
                             <th>Date</th>
+                            <th>Admin</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,6 +46,9 @@
                                 </td>
                                 <td>
                                     {{ $order->created_at }}
+                                </td>
+                                <td>
+                                    {{ $order->user->name }}
                                 </td>
                                 <td>
                                     <form class="d-inline" action="/order/{{ $order->id }}/edit">
