@@ -106,6 +106,13 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
+        $order_details = OrderDetail::where('order_id', '=', $id)->get();
+        foreach ($order_details as $item){
+            $check = OrderDetail::where('id', '=', $item->id)->first();
+            $product = Product::where('id', '=', $check['product_id'])->first();
+            $product->quantity = intval($product['quantity'] + intval($check['quantity']));
+            $product->save();
+        }
         Order::destroy($id);
         OrderDetail::where('order_id', '=', $id)->delete();
 

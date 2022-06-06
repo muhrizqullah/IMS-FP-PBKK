@@ -62,17 +62,20 @@ class OrderDetailController extends Controller
                             ->where('product_id', '=', $validatedData['product_id'])->first();
 
         $quantity = isset($check['quantity']) ? $check['quantity'] : '0';
-        if($product['quantity'] > $quantity)
+        if($product['quantity'] >= $quantity)
         {
-
             if($check)
             {
+                $product->quantity = intval($product['quantity'] - 1);
+                $product->save();
                 $validatedData['quantity'] = intval($check['quantity']) + 1;
                 
                 OrderDetail::where('id', $check['id'])->update($validatedData);
             }
             else
             {
+                $product->quantity = intval($product['quantity'] - 1);
+                $product->save();
                 OrderDetail::create($validatedData);
             }
             return redirect('/order-detail')->with('success', 'New product added successfully!');
@@ -122,8 +125,21 @@ class OrderDetailController extends Controller
         
         $product = Product::where('id', '=', $validatedData['product_id'])->first();
 
-        if($product['quantity'] >= $validatedData['quantity'] && $validatedData['quantity'] > 0)
+        if(intval($product['quantity']) > 0 && $validatedData['quantity'] > 0)
         {
+            $value = intval($orderDetail->quantity) - intval($validatedData['quantity']);
+            //dd($value);
+            $product->quantity = intval($product['quantity'] + $value);
+            $product->save();
+            OrderDetail::where('id', $orderDetail->id)->update($validatedData);
+            return redirect('/order-detail')->with('success', 'Product added successfully!');
+        }
+        elseif(intval($product['quantity']) == 0 && (intval($validatedData['quantity']) < intval($orderDetail->quantity)))
+        {
+            $value = intval($orderDetail->quantity) - intval($validatedData['quantity']);
+            //dd($value);
+            $product->quantity = intval($product['quantity'] + $value);
+            $product->save();
             OrderDetail::where('id', $orderDetail->id)->update($validatedData);
             return redirect('/order-detail')->with('success', 'Product added successfully!');
         }
@@ -141,6 +157,10 @@ class OrderDetailController extends Controller
      */
     public function destroy($id)
     {
+        $check = OrderDetail::where('id', '=', $id)->first();
+        $product = Product::where('id', '=', $check['product_id'])->first();
+        $product->quantity = intval($product['quantity'] + intval($check['quantity']));
+        $product->save();
         OrderDetail::destroy($id);
 
         return redirect('/order-detail')->with('success', 'Product deleted successfully!');
