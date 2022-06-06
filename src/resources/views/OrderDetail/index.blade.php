@@ -3,10 +3,10 @@
     <!-- Container Fluid-->
     <div class="container-fluid" id="container-wrapper">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">New Order</h1>
+            <h1 class="h3 mb-0 text-gray-800">Order Details</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/order">Orders</a></li>
-                <li class="breadcrumb-item active" aria-current="page">New Order</li>
+                <li class="breadcrumb-item active" aria-current="page">Order Details</li>
             </ol>
         </div>
 
@@ -68,11 +68,11 @@
             </div>
             <!-- Products End -->
 
-            <!-- New Order -->
+            <!-- Order Details -->
             <div class="col-xl-6 col-lg-5">
                 <div class="card">
                     <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-light">New Order</h6>
+                        <h6 class="m-0 font-weight-bold text-light">Order Details</h6>
                     </div>
                     <div class="table-responsive">
                         <table class="table align-items-center table-flush">
@@ -148,7 +148,7 @@
                     </form>
                 </div>
             </div>
-            <!-- New Order -->
+            <!-- Order Details -->
         </div>
     </div>
 @endsection
