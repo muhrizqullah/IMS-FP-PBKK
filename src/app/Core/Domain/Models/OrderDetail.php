@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Domain\Models;
 
-use App\Models\Order;
-use App\Models\Product;
+use App\Core\Domain\Models\Order;
+use App\Core\Domain\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

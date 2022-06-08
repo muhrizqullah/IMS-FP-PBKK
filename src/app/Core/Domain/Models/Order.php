@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Domain\Models;
 
-use App\Models\User;
+use App\Core\Domain\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\OrderDetail;
 
 class Order extends Model
 {

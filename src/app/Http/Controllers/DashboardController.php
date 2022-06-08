@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Product;
-use App\Models\Order;
+use App\Core\Domain\Models\Category;
+use App\Core\Domain\Models\Product;
+use App\Core\Domain\Models\Order;
 use Carbon\Carbon;
 
 class DashboardController extends Controller

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Core\Domain\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -49,7 +49,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category $category
+     * @param  \App\Core\Domain\Models\Category $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)

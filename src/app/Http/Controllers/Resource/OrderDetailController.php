@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
-use App\Models\OrderDetail;
-use App\Models\Product;
+use App\Core\Domain\Models\OrderDetail;
+use App\Core\Domain\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
@@ -89,7 +89,7 @@ class OrderDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\OrderDetail  $orderDetail
+     * @param  \App\Core\Domain\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
     public function show(OrderDetail $orderDetail)
@@ -100,7 +100,7 @@ class OrderDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\OrderDetail  $orderDetail
+     * @param  \App\Core\Domain\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
     public function edit(OrderDetail $orderDetail)
@@ -112,7 +112,7 @@ class OrderDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\OrderDetail  $orderDetail
+     * @param  \App\Core\Domain\Models\OrderDetail  $orderDetail
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, OrderDetail $orderDetail)

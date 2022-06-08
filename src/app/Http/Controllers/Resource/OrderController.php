@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Product;
+use App\Core\Domain\Models\Order;
+use App\Core\Domain\Models\OrderDetail;
+use App\Core\Domain\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -54,7 +54,7 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Core\Domain\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
@@ -69,8 +69,8 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
-     * @param  \App\Models\OrderDetail  $order_detail
+     * @param  \App\Core\Domain\Models\Order  $order
+     * @param  \App\Core\Domain\Models\OrderDetail  $order_detail
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order)

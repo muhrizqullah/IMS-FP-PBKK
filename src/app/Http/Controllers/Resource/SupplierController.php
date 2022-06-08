@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Supplier;
+use App\Core\Domain\Models\Supplier;
 
 class SupplierController extends Controller
 {
@@ -63,7 +63,7 @@ class SupplierController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Supplier $supplier
+     * @param  \App\Core\Domain\Models\Supplier $supplier
      * @return \Illuminate\Http\Response
      */
     public function edit(Supplier $supplier)
@@ -77,7 +77,7 @@ class SupplierController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Supplier $supplier
+     * @param  \App\Core\Domain\Models\Supplier $supplier
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Supplier $supplier)

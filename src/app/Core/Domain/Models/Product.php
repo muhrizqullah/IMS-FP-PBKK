@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Core\Domain\Models;
 
-use App\Models\Category;
-use App\Models\Supplier;
+use App\Core\Domain\Models\Category;
+use App\Core\Domain\Models\Supplier;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

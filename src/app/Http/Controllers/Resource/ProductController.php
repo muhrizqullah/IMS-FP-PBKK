@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Resource;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Supplier;
+use App\Core\Domain\Models\Product;
+use App\Core\Domain\Models\Category;
+use App\Core\Domain\Models\Supplier;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -66,7 +66,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Core\Domain\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -77,7 +77,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Core\Domain\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
