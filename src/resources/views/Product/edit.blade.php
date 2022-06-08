@@ -43,7 +43,7 @@
                                         <select class="form-control" name="supplier_id">
                                             @foreach($suppliers as $supplier)
                                             @if(old('supplier_id', $product->supplier_id) == $supplier->id)
-                                                <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                                <option value="{{ $supplier->id }}" selected>{{ $supplier->name }}</option>
                                             @else
                                                 <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                                             @endif

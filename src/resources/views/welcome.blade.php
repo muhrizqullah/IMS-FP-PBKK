@@ -186,7 +186,7 @@
                                             <td>
                                                 @money($product->selling_price)
                                             </td>
-                                            <td>
+                                            <td class="text-danger">
                                                 {{ $product->quantity }}
                                             </td>
                                             <td>
