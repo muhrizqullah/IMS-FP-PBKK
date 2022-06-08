@@ -16,7 +16,7 @@
                 <div class="card">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary">Products</h6>
-                            <form action="/order/create">
+                            <form action="/order-detail">
                                 <div class="input-group">
                                     <input name="search" type="text" class="form-control" placeholder="Search" value="{{ request('search') }}">
                                     <button type="submit" class="btn btn-primary">Search</button>

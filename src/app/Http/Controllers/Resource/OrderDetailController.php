@@ -33,7 +33,7 @@ class OrderDetailController extends Controller
             }
             
             return view('OrderDetail.index',[
-                'products' => Product::orderBy('product_name')->get(),
+                'products' => Product::orderBy('product_name')->filter(request(['search']))->get(),
                 'order_details' => OrderDetail::where('order_id', '=', $order_id)->orderBy('id')->get(),
                 'order_id' => $order_id,
                 'total_sales' => $total_sales,
